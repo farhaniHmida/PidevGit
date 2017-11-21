@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>|Artistic ShowRoom | </title>
+
+
+	<h:outputStylesheet
+		library="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700andamp;subset=all"></h:outputStylesheet>
+
+
+
+	<h:outputStylesheet library="assets/global/plugins/font-awesome/css"
+		name="font-awesome.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/plugins/simple-line-icons"
+		name="simple-line-icons.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/global/plugins/bootstrap/css"
+		name="bootstrap.min.css"></h:outputStylesheet>
+	<h:outputStylesheet
+		library="assets/global/plugins/bootstrap-switch/css"
+		name="bootstrap-switch.min.css"></h:outputStylesheet>
+	<h:outputStylesheet
+		library="assets/global/plugins/bootstrap-daterangepicker"
+		name="daterangepicker.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/global/plugins/morris"
+		name="morris.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/plugins/fullcalendar"
+		name="fullcalendar.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/global/plugins/jqvmap/jqvmap"
+		name="jqvmap.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/global/css"
+		name="components.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/global/css" name="plugins.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/layouts/layout/css"
+		name="layout.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/layouts/layout/css/themes"
+		name="darkblue.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/layouts/layout/css"
+		name="custom.min.css"></h:outputStylesheet>
+
+
+	<ui:insert name="head"></ui:insert>
+
+</h:head>
+<h:body
+	class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+	<div class="page-wrapper">
+		<div class="page-header navbar navbar-fixed-top">
+			<div class="page-header-inner ">
+				
+				<a href="javascript:;" class="menu-toggler responsive-toggler"
+					data-toggle="collapse" data-target=".navbar-collapse"> <span></span>
+				</a>
+				
+
+			</div>
+
+		</div>
+
+		<div class="clearfix"></div>
+
+		<div class="page-container">
+
+			<div class="page-sidebar-wrapper">
+				<div class="page-sidebar navbar-collapse collapse">
+
+					<ul class="page-sidebar-menu  page-header-fixed "
+						data-keep-expanded="false" data-auto-scroll="true"
+						data-slide-speed="200" style="padding-top: 20px">
+						<!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+						<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+						<li class="sidebar-toggler-wrapper hide">
+							<div class="sidebar-toggler">
+								<span></span>
+							</div>
+						</li>
+						<!-- END SIDEBAR TOGGLER BUTTON -->
+						<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+						<li class="sidebar-search-wrapper">
+							<!-- BEGIN RESPONSIVE QUICK SEARCH FORM --> <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
+							<!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
+							
+						</li>
+						<li class="@ViewBag.ClassLiDash"><a
+							
+							class="nav-link nav-toggle"> <i class="icon-home"></i> <span
+								class="title">
+								<h:form rendered="#{authentificationBean.logged}">
+									<h:panelGrid columns="2">
+									<h:outputText value="logged as #{authentificationBean.user.login}" />
+									<h:commandLink action="#{authentificationBean.doLogout()}"
+											value="logout" />
+								    </h:panelGrid>
+								</h:form>
+								
+								
+								</span> <span
+								class="@ViewBag.ClassspanDash"></span> <span
+								class="@ViewBag.ClassSpan2Dash"></span>
+						</a></li>
+						<li class="heading">
+							<h3 class="uppercase">Modules</h3>
+							 <p:menu toggleable="true">
+        
+        <p:submenu label="Course">
+            <p:menuitem value="Course List" outcome="/pages/reservation/listreserve.jsf" icon="ui-icon-star"/>
+            <p:menuitem value="Reserved Course" outcome="/pages/reservation/listcoursreserved.jsf" icon="ui-icon-star"/>
+               
+        </p:submenu>
+        
+    </p:menu>
+		</li>
+
+
+						
+
+
+					</ul>
+				</div>
+
+			</div>
+			<div class="page-content-wrapper">
+
+				<div class="page-content">
+
+					<ui:insert name="content"></ui:insert>
+				</div>
+
+			</div>
+
+		</div>	
+
+</div>
+
+	
+	
+
+
+	
+
+</h:body>
+
+</html>

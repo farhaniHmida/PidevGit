@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      template="/template/masterLayout.xhtml"
+       xmlns:p="http://primefaces.org/ui"> 
+<ui:define name="content">  
+<h:head></h:head> 
+<body> 
+<h:form >
+    <p:panel header="New Course">
+ 		 <p:messages autoUpdate="true"/>
+        
+ 
+          <h:panelGrid id="grid" columns="1" cellpadding="4">
+        
+         	<p:outputLabel   value="Title :" style="font-weight:bold"/>
+   			<p:outputLabel   value="#{courseBean.course.title}" style="font-weight:bold"/>
+            <p:outputLabel value="Description :" />
+    			<p:outputLabel   value="#{courseBean.course.description}" style="font-weight:bold"/>
+            <p:outputLabel  value="Course Type :" />
+            	<p:outputLabel   value="#{courseBean.course.type}" style="font-weight:bold"/>
+   			
+    		
+    		<p:outputLabel   value="Number Attendance :" style="font-weight:bold"/>
+   			<p:outputLabel   value="#{courseBean.course.numberAttendance}" style="font-weight:bold"/>
+            
+            
+            <p:outputLabel   value="Price :" style="font-weight:bold"/>
+            <p:outputLabel   value="#{courseBean.course.price}" style="font-weight:bold"/>
+   			
+          	</h:panelGrid>
+       
+ 
+ 			<h:form>
+      		 <h:commandButton  action = "#{courseBean.doSaveOrUpdate()}" value="Create" />
+       		</h:form>
+         
+    </p:panel>
+</h:form>
+
+
+
+
+
+</body> 
+</ui:define>   
+</ui:composition>

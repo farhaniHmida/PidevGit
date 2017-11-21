@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      template="/template/templatefront.xhtml"> 
+      
+<ui:define name="content">
+<h:head></h:head> 
+<body> 
+<h:form id="form">
+    <p:dataGrid var="reserv" value="#{courseBean.listReservation}" columns="3" layout="grid"
+        rows="12" paginator="true" id="cars"
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="6,12,16">
+ 
+        <f:facet name="header">
+            Course 
+        </f:facet>
+ 
+        <p:panel header="#{reserv.course.title}" style="text-align:center">
+            <h:panelGrid columns="1" style="width:100%">
+                
+ 
+                <h:outputText value="#{reserv.reservationDate}" />
+ 
+                <p:commandLink update=":form:courseDetail" oncomplete="PF('courseDialog').show()" title="View Detail">
+                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                    <f:setPropertyActionListener value="#{reserv}" target="#{courseBean.reserv}" />
+                   
+                </p:commandLink>
+            </h:panelGrid>
+        </p:panel>
+ 
+    </p:dataGrid>
+ 
+    <p:dialog header="Course Info" widgetVar="courseDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="courseDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty courseBean.reserv}" columnClasses="label,value">
+               
+ 
+                <h:outputText value="Title:" />
+                <h:outputText value="#{courseBean.reserv.course.title}" />
+ 
+                <h:outputText value="Price" />
+                <h:outputText value="#{courseBean.reserv.course.price}" />
+ 
+                <h:outputText value="Type:" />
+                <h:outputText value="#{courseBean.reserv.course.type}" />
+ 
+                <h:outputText value="Description" />
+                <h:outputText value="#{courseBean.reserv.course.description}" />
+            </p:panelGrid>
+            
+        </p:outputPanel>
+       
+    </p:dialog>
+</h:form>
+</body> 
+</ui:define>
+</ui:composition>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body> 
+<h:dataTable value="#{reservationBean.listReservationTest1}" var="a" border="1">
+		<f:facet name="header">All Course</f:facet>
+		<h:column>
+			<f:facet name="header">#</f:facet>
+			<h:outputText value="#{a.courseID}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">title</f:facet>
+			<h:outputText value="#{a.title}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Attendance</f:facet>
+			<h:outputText value="#{a.numberAttendance}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">description</f:facet>
+			<h:outputText value="#{a.description}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">					
+    				Price  			   
+    			   </f:facet>
+			<h:outputText value="#{a.price}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">					
+    				Price  			   
+    			   </f:facet>
+			<h:outputText value="#{courseBean.occurence}" />
+		</h:column>
+		
+		
+		
+		</h:dataTable>
+
+</h:body> 
+</html>

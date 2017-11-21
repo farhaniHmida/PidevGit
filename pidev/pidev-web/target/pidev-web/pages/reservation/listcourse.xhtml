@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+<h:form rendered="#{authentificationBean.logged}">
+		<h:panelGrid columns="2">
+			<h:outputText value="logged as #{authentificationBean.user.login}" />
+			<h:commandLink action="#{authentificationBean.doLogout()}"
+				value="logout" />
+		</h:panelGrid>
+</h:form>
+
+</h:head> 
+<body> 
+
+
+
+<h:dataTable value="#{reservationBean.listCourseNonReserved}" var="c" border="1">
+		<f:facet name="header">All Course</f:facet>
+		<h:column>
+			<f:facet name="header">#</f:facet>
+			<h:outputText value="#{c.courseID}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">title</f:facet>
+			<h:outputText value="#{c.title}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Attendance</f:facet>
+			<h:outputText value="#{c.numberAttendance}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">description</f:facet>
+			<h:outputText value="#{c.description}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">price</f:facet>
+			<h:outputText value="#{c.price}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">action</f:facet>
+			<h:form>
+				<h:commandButton value="select" >
+				<f:setPropertyActionListener value="#{c}" target="#{reservationBean.course}"/>
+				<f:setPropertyActionListener value="true" target="#{reservationBean.form}"/>
+				<f:setPropertyActionListener value="#{authentificationBean.user}" target="#{reservationBean.membre}"/>
+				</h:commandButton>
+			</h:form>
+		</h:column>
+		</h:dataTable>
+		
+		
+		<h:form rendered="#{reservationBean.form}">
+		<h:panelGrid columns="2">
+			<h:outputText value="Title" />
+		  	<h:inputText value="#{reservationBean.course.title}"/>
+		  	
+		    <h:outputText value="Description" />
+		  	<h:inputText value="#{reservationBean.course.description}" />
+		  	
+		  	 <h:outputText value="NumberAttendance" />
+		  	<h:inputText value="#{reservationBean.course.numberAttendance}" />
+		  	
+		  	 <h:outputText value="Price" />
+		  	<h:inputText value="#{reservationBean.course.price}" />
+			
+		</h:panelGrid>
+		<h:panelGrid>
+			
+		<h:form>		
+			<h:commandButton action="#{reservationBean.doReservation()}" value="Reserve" />		
+		</h:form>
+			</h:panelGrid>
+			
+			
+			
+			<h:dataTable value="#{reservationBean.listCourseNonreserved}" var="c" border="1">
+		<f:facet name="header">All Course</f:facet>
+		<h:column>
+			<f:facet name="header">#</f:facet>
+			<h:outputText value="#{c.courseID}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">title</f:facet>
+			<h:outputText value="#{c.title}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Attendance</f:facet>
+			<h:outputText value="#{c.numberAttendance}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">description</f:facet>
+			<h:outputText value="#{c.description}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">price</f:facet>
+			<h:outputText value="#{c.price}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">action</f:facet>
+			
+		</h:column>
+		</h:dataTable>
+		
+	</h:form>
+		
+
+</body> 
+</html>

@@ -1,0 +1,13 @@
+esprit\tn\pidev\services\MemberServiceLocal.class
+esprit\tn\pidev\services\MemberServiceRemote.class
+esprit\tn\pidev\persistence\ReservationPk.class
+esprit\tn\pidev\services\CourseServiceRemote.class
+esprit\tn\pidev\services\CourseService.class
+esprit\tn\pidev\persistence\Course.class
+esprit\tn\pidev\services\CourseServiceLocal.class
+esprit\tn\pidev\services\ReservationService.class
+esprit\tn\pidev\services\ReservationServiceRemote.class
+esprit\tn\pidev\services\ReservationServiceLocal.class
+esprit\tn\pidev\persistence\Member.class
+esprit\tn\pidev\persistence\Reservation.class
+esprit\tn\pidev\services\MemberService.class

@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      template="/template/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"> 
+<ui:define name="content">
+<h:head></h:head> 
+<body> 
+
+	 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+       
+ 
+        <p:outputLabel for="advanced" value="Advanced:" />
+        <p:selectOneListbox id="advanced" value="#{courseBean.listCourse}"  var="t" >
+            <f:selectItems value="#{courseBean.listCourse}" var="course" itemLabel="#{t.title}" itemValue="#{course}" />
+ 
+            <p:column>
+                <h:outputText value="#{t.type}" />
+            </p:column>
+ 
+            <p:column>
+                <h:outputText value="#{t.title}" />
+            </p:column>
+        </p:selectOneListbox>
+
+    </h:panelGrid>
+    <h:form>
+     <h:commandButton action="#{courseBean.ShowListReservation()}" value="Search" icon="ui-icon-close">
+    		<f:setPropertyActionListener value="#{t}" target="#{courseBean.course}" />
+      </h:commandButton>
+       		
+ </h:form>
+    <p:separator />
+
+  
+   
+  
+</body> 
+</ui:define>
+</ui:composition>

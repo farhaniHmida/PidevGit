@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>ArtisticShowRoom | Admin Dashboard</title>
+
+
+	<h:outputStylesheet
+		library="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700andamp;subset=all"></h:outputStylesheet>
+
+
+
+	<h:outputStylesheet library="assets/global/plugins/font-awesome/css"
+		name="font-awesome.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/plugins/simple-line-icons"
+		name="simple-line-icons.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/global/plugins/bootstrap/css"
+		name="bootstrap.min.css"></h:outputStylesheet>
+	<h:outputStylesheet
+		library="assets/global/plugins/bootstrap-switch/css"
+		name="bootstrap-switch.min.css"></h:outputStylesheet>
+	<h:outputStylesheet
+		library="assets/global/plugins/bootstrap-daterangepicker"
+		name="daterangepicker.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/global/plugins/morris"
+		name="morris.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/plugins/fullcalendar"
+		name="fullcalendar.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/global/plugins/jqvmap/jqvmap"
+		name="jqvmap.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/global/css"
+		name="components.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/global/css" name="plugins.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/layouts/layout/css"
+		name="layout.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/layouts/layout/css/themes"
+		name="darkblue.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="assets/layouts/layout/css"
+		name="custom.min.css"></h:outputStylesheet>
+
+
+	<ui:insert name="head"></ui:insert>
+
+</h:head>
+<h:body
+	class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+	<div class="page-wrapper">
+		<div class="page-header navbar navbar-fixed-top">
+			<div class="page-header-inner ">
+				
+				<a href="javascript:;" class="menu-toggler responsive-toggler"
+					data-toggle="collapse" data-target=".navbar-collapse"> <span></span>
+				</a>
+				
+
+			</div>
+
+		</div>
+
+		<div class="clearfix"></div>
+
+		<div class="page-container">
+
+			<div class="page-sidebar-wrapper">
+				<div class="page-sidebar navbar-collapse collapse">
+
+					<ul class="page-sidebar-menu  page-header-fixed "
+						data-keep-expanded="false" data-auto-scroll="true"
+						data-slide-speed="200" style="padding-top: 20px">
+						<!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+						<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+						<li class="sidebar-toggler-wrapper hide">
+							<div class="sidebar-toggler">
+								<span></span>
+							</div>
+						</li>
+						<!-- END SIDEBAR TOGGLER BUTTON -->
+						<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+						<li class="sidebar-search-wrapper">
+							<!-- BEGIN RESPONSIVE QUICK SEARCH FORM --> <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
+							<!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
+							
+						</li>
+						<li class="@ViewBag.ClassLiDash"><a
+							
+							class="nav-link nav-toggle"> <i class="icon-home"></i> <span
+								class="title">
+								<h:form rendered="#{authentificationBean.logged}">
+									<h:panelGrid columns="2">
+									<h:outputText value="logged as #{authentificationBean.user.login}" />
+									<h:commandLink action="#{authentificationBean.doLogout()}"
+											value="logout" />
+										</h:panelGrid>
+									</h:form>
+									</span> <span
+								class="@ViewBag.ClassspanDash"></span> <span
+								class="@ViewBag.ClassSpan2Dash"></span>
+						</a></li>
+						<li class="heading">
+							<h3 class="uppercase">Modules</h3>
+							 <p:menu toggleable="true">
+        
+        <p:submenu label="Course">
+            <p:menuitem value="Course List" outcome="/pages/list.jsf?faces-redirect=true" icon="ui-icon-star"/>
+            <p:menuitem value="Add Course" outcome="/pages/course/addcourse.jsf?faces-redirect=true" icon="ui-icon-star"/>
+        </p:submenu>
+        <p:submenu label="statistical Review">     
+            <p:menuitem value="statistical Review by Category" outcome="/pages/stat/statanimate.jsf" icon="ui-icon-star"/> 
+            <p:menuitem value="statistical Review For Course" outcome="/pages/stat/satatforcourse.jsf" icon="ui-icon-star"/>      
+        </p:submenu>
+    </p:menu>
+						</li>
+
+
+						
+
+
+					</ul>
+				</div>
+
+			</div>
+			<div class="page-content-wrapper">
+
+				<div class="page-content">
+
+					<ui:insert name="content"></ui:insert>
+				</div>
+
+			</div>
+
+		</div>	
+
+</div>
+
+	<h:outputScript library="assets/global/plugins" name="jquery.min.js"
+		type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/bootstrap/js"
+		name="bootstrap.min.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins" name="js.cookie.min.js"
+		type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/jquery-slimscroll"
+		name="jquery.slimscroll.min.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins"
+		name="jquery.blockui.min.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/bootstrap-switch/js"
+		name="bootstrap-switch.min.js" type="text/javascript" />
+	<!-- END CORE PLUGINS -->
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+	<h:outputScript library="assets/global/plugins" name="moment.min.js"
+		type="text/javascript" />
+	<h:outputScript
+		library="assets/global/plugins/bootstrap-daterangepicker"
+		name="daterangepicker.min.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/morris"
+		name="morris.min.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/morris"
+		name="raphael-min.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/counterup"
+		name="jquery.waypoints.min.js" type="text/javascript" />
+	<h:outputScript
+		library="assets/global/plugins/amcharts/amcharts/themes"
+		name="chalk.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/amcharts/ammap"
+		name="ammap.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/amcharts/ammap/maps/js"
+		name="worldLow.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/amcharts/amstockcharts"
+		name="amstock.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/fullcalendar"
+		name="fullcalendar.min.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/horizontal-timeline"
+		name="horizontal-timeline.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/flot"
+		name="jquery.flot.min.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/flot"
+		name="jquery.flot.resize.min.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/flot"
+		name="jquery.flot.categories.min.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/jquery-easypiechart"
+		name="jquery.easypiechart.min.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins"
+		name="jquery.sparkline.min.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/jqvmap/jqvmap"
+		name="jquery.vmap.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/jqvmap/jqvmap/maps"
+		name="jquery.vmap.russia.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/jqvmap/jqvmap/maps"
+		name="jquery.vmap.world.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/jqvmap/jqvmap/maps"
+		name="jquery.vmap.europe.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/jqvmap/jqvmap/maps"
+		name="jquery.vmap.germany.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/jqvmap/jqvmap/maps"
+		name="jquery.vmap.usa.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/jqvmap/jqvmap/data"
+		name="jquery.vmap.sampledata.js" type="text/javascript" />
+	<!-- END PAGE LEVEL PLUGINS -->
+	<!-- BEGIN THEME GLOBAL SCRIPTS -->
+	<h:outputScript library="assets/pages/scripts" name="jquery.min.js"
+		type="text/javascript" />
+
+	<h:outputScript library="assets/pages/scripts" name="app.min.js"
+		type="text/javascript" />
+	<!-- END THEME GLOBAL SCRIPTS -->
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	<h:outputScript library="assets/pages/scripts" name="dashboard.min.js"
+		type="text/javascript" />
+	<!-- END PAGE LEVEL SCRIPTS -->
+	<!-- BEGIN THEME LAYOUT SCRIPTS -->
+
+
+	<h:outputScript library="assets/layouts/layout/scripts"
+		name="layout.min.js" type="text/javascript" />
+	<h:outputScript library="assets/layouts/layout/scripts"
+		name="demo.min.js" type="text/javascript" />
+	<h:outputScript library="assets/layouts/global/scripts"
+		name="quick-sidebar.min.js" type="text/javascript" />
+
+	<h:outputScript library="assets/layouts/global/plugins/ladda"
+		name="ladda.min.js" type="text/javascript" />
+	<h:outputScript library="assets/layouts/global/plugins/ladda"
+		name="spin.min.js" type="text/javascript" />
+	<h:outputScript library="assets/pages/scripts" name="ui-buttons.min.js"
+		type="text/javascript" />
+	<h:outputScript library="assets/pages/scripts"
+		name="table-datatables-buttons.min.js" type="text/javascript" />
+	<h:outputScript library="assets/pages/scripts"
+		name="charts-amcharts.min.js" type="text/javascript" />
+	<h:outputScript
+		library="assets/global/plugins/datatables/plugins/bootstrap"
+		name="datatables.bootstrap.js" type="text/javascript" />
+	<h:outputScript library="assets/global/scripts" name="datatable.js"
+		type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/bootstrap-datepicker"
+		name="bootstrap-datepicker.min" type="text/javascript" />
+	<h:outputScript library="assets/layouts/global/scripts"
+		name="quick-nav.min.js" type="text/javascript" />
+
+	<h:outputScript library="assets/global/plugins/jquery-slimscroll"
+		name="jquery.slimscroll.min.js" type="text/javascript" />
+
+	<h:outputScript library="assets/global/plugins/amcharts/amcharts"
+		name="amcharts.js" type="text/javascript" />
+
+	<h:outputScript library="assets/global/plugins/amcharts/amcharts"
+		name="serial.js" type="text/javascript" />
+
+	<h:outputScript library="assets/global/plugins/amcharts/amcharts"
+		name="pie.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins/amcharts/amcharts"
+		name="radar.js" type="text/javascript" />
+	<h:outputScript
+		library="assets/global/plugins/amcharts/amcharts/themes"
+		name="light.js" type="text/javascript" />
+	<h:outputScript
+		library="assets/global/plugins/amcharts/amcharts/themes"
+		name="patterns.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins"
+		name="datatables.min.js" type="text/javascript" />
+	<h:outputScript library="assets/global/plugins"
+		name="bootstrap-datepicker.min.js" type="text/javascript" />
+
+</h:body>
+
+</html>

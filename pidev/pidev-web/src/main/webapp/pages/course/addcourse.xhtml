@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pm="http://primefaces.org/mobile"
+      xmlns:p="http://primefaces.org/ui"
+      template="/template/template.xhtml"> 
+<ui:define name="content">
+<h:head></h:head> 
+<h:body> 
+
+
+<h:form >
+    <p:panel header="New Course">
+ 		 <p:messages autoUpdate="true"/>
+        
+ 
+          <h:panelGrid id="grid" columns="1" cellpadding="4">
+        
+         	 <p:outputLabel  for="title" value="Title:" style="font-weight:bold"/>
+   			 <p:inputText id="title" value="#{courseBean.course.title}" required="true" label="title">
+   			 <f:validateLength minimum="2" />
+   			 <p:ajax update="msgTitle" event="keyup" />
+   			 </p:inputText>
+             <p:message for="title" id="msgTitle" display="icon" style="font-weight:bold"/>
+ 
+ 
+            <p:outputLabel for="description" value="Description" />
+    		<p:inputTextarea id = "description" value="#{courseBean.course.description}" required="true" label="Description" >
+            <f:validateLength minimum="30" />
+            <p:ajax update="msgDescription" event="keyup" />
+            </p:inputTextarea>
+            <p:message for="description" id="msgDescription" display="icon" style="font-weight:bold"/>
+           
+            <p:outputLabel  value="Course Type" />
+   			<p:selectOneListbox id="typecourse" value="#{courseBean.course.type}">
+           			 	<f:selectItem itemLabel="PlaticArt" itemValue="PlaticArt" />
+            			<f:selectItem itemLabel="Painting " itemValue="Painting" />
+           		 		<f:selectItem itemLabel="Sculpture" itemValue="Sculpture" />
+           			 	<f:selectItem itemLabel="Design" itemValue="Design" />
+    		</p:selectOneListbox>
+    		
+    		<p:outputLabel  for="NumberAttendance" value="Number Attendance:" style="font-weight:bold"/>
+   			<p:inputText id="NumberAttendance"  value="#{courseBean.course.numberAttendance}" required="true" label="NumberAttendance">
+   			</p:inputText>
+            
+            
+            <p:outputLabel  for="Price" value="Price:" style="font-weight:bold"/>
+   			<p:inputText id="Price"  value="#{courseBean.course.price}" required="true" label="Price">
+   			</p:inputText>
+          	</h:panelGrid>
+       
+ 
+ 			<h:form>
+      		 <h:commandButton  action = "#{courseBean.doSaveOrUpdate()}" value="Create" />
+       		</h:form>
+         
+    </p:panel>
+</h:form>
+</h:body>
+</ui:define>
+</ui:composition>

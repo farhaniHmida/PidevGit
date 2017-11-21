@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      template="/template/masterLayout.xhtml"> 
+<ui:define name="content">
+<h:head>
+<h:form rendered="#{authentificationBean.logged}">
+		<h:panelGrid columns="2">
+			<h:outputText value="logged as #{authentificationBean.user.login}" />
+		</h:panelGrid>
+</h:form>
+</h:head> 
+
+
+
+
+
+
+
+
+
+	<p:dataTable id="tbl" var="c" value="#{courseBean.listCourse}"
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+                 paginator="true" rows="10" style="margin-bottom:20px">
+ 
+        
+ 		
+		<p:column>
+			<f:facet name="header">Title</f:facet>
+			<h:outputText value="#{c.title}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">Number of Attendance</f:facet>
+			<h:outputText value="#{c.numberAttendance}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">Course Description</f:facet>
+			<h:outputText value="#{c.description}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">	Course Price </f:facet>
+			<h:outputText value="#{c.price}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">Course Category</f:facet>
+			<h:outputText value="#{c.type}" />
+		</p:column>
+   
+    
+   <p:column>
+			<f:facet name="header">action</f:facet>
+			<h:form>
+				<h:commandButton value="select" >
+				<f:setPropertyActionListener value="#{c}" target="#{courseBean.course}"/>
+				<f:setPropertyActionListener value="true" target="#{courseBean.form}"/>
+				</h:commandButton>
+			</h:form>
+		</p:column>
+ 	</p:dataTable>	
+ 	
+ 	
+ 	 
+		<h:form rendered="#{courseBean.form}">
+		<h:panelGrid columns="2">
+			<h:outputText value="Title" />
+		  	<h:inputText value="#{courseBean.course.title}"/>
+		  	
+		    <h:outputText value="Description" />
+		  	<h:inputText value="#{courseBean.course.description}" />
+		  	
+		  	 <h:outputText value="NumberAttendance" />
+		  	<h:inputText value="#{courseBean.course.numberAttendance}" />
+		  	
+		  	 <h:outputText value="Price" />
+		  	<h:inputText value="#{courseBean.course.price}" />
+			
+		</h:panelGrid>
+		<h:panelGrid>
+			
+			<h:form>
+			<h:commandButton action="#{courseBean.doSaveOrUpdate()}" value="Save" />
+			</h:form>
+			</h:panelGrid>
+	</h:form>
+ 	 
+	
+	 
+	 	 </ui:define>
+</ui:composition>
